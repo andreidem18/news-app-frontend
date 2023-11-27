@@ -27,7 +27,7 @@ const NewsDetail = () => {
 
   const addToFavorites = () => {
     const favorite = {
-      news: news.id,
+      newsId: news.id,
       rate: rate
     };
     dispatch(addFavoriteThunk(favorite));
@@ -59,7 +59,7 @@ const NewsDetail = () => {
             {newsFiltered.map((newsItem) => (
               <ListGroup.Item key={newsItem.id}>
                 <Link to={`/news/${newsItem.id}`}>
-                  <img src={newsItem.image} alt="" className="img-fluid" />
+                  <img src={newsItem.images?.[0]?.url} alt="" className="img-fluid" />
                   {newsItem.headline}
                 </Link>
               </ListGroup.Item>

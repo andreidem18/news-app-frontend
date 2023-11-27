@@ -22,7 +22,7 @@ export const getFavoritesThunk = () => (dispatch) => {
 
 export const addFavoriteThunk = (favorite) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios().post('/news/add_to_favorite/', favorite)
+    return axios().post('/favorites/', favorite)
         .then(() => dispatch(getFavoritesThunk()))
         .catch(() => alert("Hubo un error"))
         .finally(() => dispatch(setIsLoading(false)));
@@ -34,6 +34,14 @@ export const updateRateThunk = (id, rate) => (dispatch) => {
     }
     return axios().put(`/favorites/${id}/change_rate/`, body)
         .then(() => dispatch(getFavoritesThunk()))
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const deleteFavoriteThunk = (id) => dispatch => {
+    dispatch(setIsLoading(true));
+    return axios().delete('/favorites/'+id)
+        .then(() => dispatch(getFavoritesThunk()))
+        .catch(() => alert("Hubo un error"))
         .finally(() => dispatch(setIsLoading(false)));
 }
 

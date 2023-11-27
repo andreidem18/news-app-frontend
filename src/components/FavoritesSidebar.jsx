@@ -32,8 +32,8 @@ const FavoritesSidebar = ({ show, handleClose }) => {
         <ul>
           {favorites?.map((favorite) => (
             <li key={favorite.id}>
-              <img src={favorite.news.image} alt="" className="img-fluid" />
-              {favorite.news.headline}
+              <img src={favorite.news?.images?.[0]?.url} alt="" className="img-fluid" />
+              {favorite.news?.headline}
               <br />
               <button onClick={() => decrementRate(favorite)}>Decrement</button>
               {favorite.rate}

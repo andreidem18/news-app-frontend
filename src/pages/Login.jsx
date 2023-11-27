@@ -12,10 +12,10 @@ const Login = () => {
 
   const submit = (data) => {
     console.log(data);
-    axios
-      .post("/login/", data)
+    axios()
+      .post("/users/login/", data)
       .then((res) => {
-        localStorage.setItem("token", res.data.access);
+        localStorage.setItem("token", res.data.token);
         navigate("/");
       })
       .catch((error) => {
